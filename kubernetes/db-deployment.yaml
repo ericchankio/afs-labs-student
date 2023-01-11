@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: echankio
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: harbor.dev.afsmtddso.com/echankio-harbor-project/app@sha256:7b074024e80ff33706aee133d11015bb0d5c9281b6636e5bd0090a8be2ba54a2
+        name: db-deployment
+        image: harbor.dev.afsmtddso.com/echankio-harbor-project/db@sha256:9a133031319b56f895939e57aab82a6258fd47f1b35dae2e008fd52d0cf943e4
         ports:
-        - containerPort: 5000
+        - containerPort: 5432
