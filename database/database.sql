@@ -1,4 +1,4 @@
--- Goods
+-- Goodss
 -- PostgreSQL database dump
 --
 
